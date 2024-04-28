@@ -1,0 +1,45 @@
+<div class="tasks-container">
+  <div class="tasks-header">
+    <h2>Tasks</h2>
+    <form (submit)="addTask(title.value, dueDate.value, priority.value)">
+      <input type="text" #title placeholder="Add new task" required>
+      <input type="date" #dueDate>
+      <select #priority>
+        <option value="high">High</option>
+        <option value="normal">Normal</option>
+        <option value="urgent">Urgent</option>
+      </select>
+      <button type="submit">Add</button>
+    </form>
+  </div>
+ 
+  
+  <div class="tasks-stats">
+    <button (click)="showTasks('total')">Total Tasks: {{ totalTasks }}</button>
+    <button (click)="showTasks('completed')">Completed Tasks: {{ completedTasks }}</button>
+    <button (click)="showTasks('todo')">To-Do Tasks: {{ todoTasks }}</button>
+    <button (click)="showTasks('inprogress')">In-Progress Tasks: {{ inprogressTasks }}</button>
+  </div>
+
+  <div class="tasks-list">
+    <div class="tasks-filter" *ngIf="selectedTasks.length > 0">
+      <h3>{{ selectedTasksLabel }}</h3>
+      <button (click)="clearTasks()">Clear</button>
+    </div>
+    <div class="task-item" *ngFor="let task of selectedTasks; let i = index">
+      <p>{{ task.title }}</p>
+      <p>{{ task.status }}</p>
+      
+        <p *ngIf="task.dueDate">Due Date: {{ task.dueDate | date }}</p>
+        <p *ngIf="task.priority">Priority: {{ task.priority }}</p>
+      <!-- <p *ngIf="task.dueDate">Due Date: {{ task.dueDate | date }}</p> -->
+      <button *ngIf="task.status === 'completed'" (click)="moveTaskToStatus(task, 'todo')">Move to To-Do</button>
+      <button *ngIf="task.status === 'completed'" (click)="moveTaskToStatus(task, 'inprogress')">Move to In-Progress</button>
+      <button *ngIf="task.status === 'todo'" (click)="moveTaskToStatus(task, 'completed')">Move to Completed</button>
+      <button *ngIf="task.status === 'todo'" (click)="moveTaskToStatus(task, 'inprogress')">Move to In-Progress</button>
+      <button *ngIf="task.status === 'inprogress'" (click)="moveTaskToStatus(task, 'completed')">Move to Completed</button>
+      <button *ngIf="task.status === 'inprogress'" (click)="moveTaskToStatus(task, 'todo')">Move to To-Do</button>
+      <button (click)="deleteTask(i)">Delete</button>
+    </div>
+  </div>
+</div>

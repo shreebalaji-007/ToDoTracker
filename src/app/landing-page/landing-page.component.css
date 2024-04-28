@@ -1,0 +1,80 @@
+/* landing-page.component.css */
+
+app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0 20px;
+}
+
+.landing-container .header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.landing-container .header h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.landing-container .header p {
+  font-size: 1.5rem;
+  color: #666;
+}
+
+.landing-container .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.landing-container .content button {
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.landing-container .content button:hover {
+  background-color: #0062cc;
+}
+
+.landing-container .footer {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .landing-container {
+    padding: 0 10px;
+  }
+
+  .landing-container .header h1 {
+    font-size: 3rem;
+  }
+
+  .landing-container .header p {
+    font-size: 1.2rem;
+  }
+
+  .landing-container .content button {
+    padding: 12px 20px;
+    font-size: 1.3rem;
+  }
+}
