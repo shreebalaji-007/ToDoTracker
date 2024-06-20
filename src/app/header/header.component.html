@@ -1,12 +1,12 @@
-<!-- header.component.html -->
-
-<header class="header">
-    <div class="logo">
-      <h1>To-Do-Tracker</h1>
-    </div>
-    <div class="actions">
-      <button mat-button routerLink="/login">Login</button>
-      <button mat-button routerLink="/register">Register</button>
-    </div>
-  </header>
-  
+<mat-toolbar color="primary">
+  <h1>Todo Tracker</h1>
+  <span class="spacer"></span>
+  <nav *ngIf="!isLoggedIn()">
+    <a routerLink="/login" routerLinkActive="active">Login</a>&nbsp;|&nbsp; 
+    <a routerLink="/register" routerLinkActive="active">Register</a>
+  </nav>
+  <nav *ngIf="isLoggedIn()">
+    <a routerLink="/todo" routerLinkActive="active">Todo</a>&nbsp;|&nbsp;
+    <button (click)="logout()">Logout</button>
+  </nav>
+</mat-toolbar>

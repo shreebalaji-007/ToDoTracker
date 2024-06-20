@@ -1,59 +1,8 @@
-/* header.component.css */
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: #007bff;
-  color: #fff;
-}
-
-.header .logo {
-  display: flex;
-  align-items: center;
-}
-
-.header .logo h1 {
-  margin: 0;
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.header .actions {
-  display: flex;
-  align-items: center;
-}
-
-.header .actions button {
-  margin-left: 10px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  color: #fff;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.header .actions button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.header .actions button:first-child {
-  margin-left: 0;
-}
-
-@media (max-width: 768px) {
-  .header {
-    flex-direction: column;
+.spacer {
+    flex: 1 1 auto;
   }
-
-  .header .logo {
-    margin-bottom: 10px;
-  }
-
-  .header .actions {
-    margin-top: 10px;
-  }
+  .mat-toolbar.mat-primary a{
+    color: white;
+    font-size: 16px;
+  font-weight: 400;
 }

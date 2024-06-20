@@ -1,0 +1,9 @@
+.main-content {
+    padding: 20px;
+    background-image: url('../assets/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+a {
+    cursor: pointer;    
+}

@@ -1,30 +1,28 @@
-// login.component.ts
-
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
-  username: string = '';
-  password: string = '';
 
-  constructor(private router: Router) { }
+export class LoginComponent {
+  username!: string;
+  password!: string;
+  errorMessage!: string;
 
-  ngOnInit(): void {
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
-  login() {
-    // Simulate login logic, replace with your actual authentication logic
-    if (this.username === 'admin' && this.password === 'password') {
-      // Navigate to dashboard or any other page upon successful login
-      this.router.navigate(['/dashboard']);
-    } else {
-      // Show error message or handle failed login attempt
-      console.log('Invalid credentials. Please try again.');
-    }
+  login(): void {
+    this.authService.login(this.username, this.password).subscribe(
+      () => {
+        this.router.navigate(['/todo']); // Redirect to todo page on successful login
+      },
+      error => {
+        this.errorMessage = error.message; // Display error message
+      }
+    );
   }
 }
